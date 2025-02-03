@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import { getStoredReadList } from '../Utilities/AddToDB';
+import { getStoredReadList} from '../Utilities/AddToDB';
 import Book from '../Home/Book/Book';
 const ListedBooks = () => {
 
@@ -18,6 +18,7 @@ const ListedBooks = () => {
         const readBookLIst = allBooks.filter(book => storedReadLIstInt.includes(book.bookId))
         setReadList(readBookLIst)
     },[])
+
     return (
         <div>
             <div>
@@ -34,7 +35,7 @@ const ListedBooks = () => {
                         }
                         </div>
                     </TabPanel>
-                    <TabPanel>My Wish List</TabPanel>
+                    <TabPanel><h1>Wish List </h1></TabPanel>
                 </Tabs>
             </div>
         </div>
