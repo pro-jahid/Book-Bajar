@@ -1,4 +1,5 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import { addToStoredReadList, addToStoredWishList } from "../Utilities/AddToDB";
 
 const BookDetails = () => {
   const { bookId } = useParams();
@@ -23,6 +24,15 @@ const BookDetails = () => {
 
   if (!book) {
     return <div className="text-center p-10 text-red-500">Book not found.</div>;
+
+  }
+
+  const handleMarkAsRead = (id) =>{
+    addToStoredReadList(id)
+  }
+
+  const handleWishList =(id)=>{
+    addToStoredWishList(id)
   }
 
   return (
@@ -63,6 +73,10 @@ const BookDetails = () => {
       <div className="mt-6">
         <h4 className="text-lg font-medium text-gray-700">Review</h4>
         <p className="text-gray-600 mt-2">{review}</p>
+      </div>
+      <div className="flex gap-4 my-6">
+        <button onClick={()=> handleMarkAsRead(bookId)} className="bg-green-500 rounded-xl font-bold py-3 px-3">Marks add read</button>
+        <button onClick={()=> handleWishList(bookId)} className="bg-pink-600 rounded-xl font-bold py-3 px-3">Add to wish list</button>
       </div>
     </div>
   );
